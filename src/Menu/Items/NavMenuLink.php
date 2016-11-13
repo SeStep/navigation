@@ -18,7 +18,7 @@ class NavMenuLink extends ANavMenuItem
     protected $icon;
     protected $parameters;
 
-    public function __construct($target, $caption = '', $icon = '', $parameters)
+    public function __construct($target, $caption = '', $icon = '', $parameters = [])
     {
         $this->target = $target;
         $this->caption = $caption ?: $target;

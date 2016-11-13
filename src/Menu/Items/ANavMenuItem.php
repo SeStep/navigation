@@ -2,7 +2,6 @@
 
 namespace SeStep\Navigation\Menu\Items;
 
-use Nette\Object;
 use SeStep\Navigation\Bootstrap3\BootstrapLevels;
 use SeStep\Navigation\Bootstrap3\Label;
 use SeStep\Navigation\Menu\NavigationMenuSubitems;
@@ -14,7 +13,7 @@ use SeStep\Navigation\Menu\NavigationMenuSubitems;
  *
  * @property        Label $label
  */
-abstract class ANavMenuItem extends Object implements INavMenuItem
+abstract class ANavMenuItem implements INavMenuItem
 {
     use NavigationMenuSubitems;
 

@@ -2,10 +2,10 @@
 
 namespace SeStep\Navigation\Menu;
 
-use Nette\UnexpectedValueException;
 use SeStep\Navigation\Menu\Items\INavMenuItem;
 use SeStep\Navigation\Menu\Items\NavMenuLink;
 use SeStep\Navigation\Menu\Items\NavMenuSeparator;
+use UnexpectedValueException;
 
 /**
  * Class NavigationMenuSubitems
