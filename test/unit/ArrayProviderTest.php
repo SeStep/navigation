@@ -53,4 +53,39 @@ class ArrayProviderTest extends TestCase
 
         $this->assertCount(2, $items['basement']->getItems());
     }
+
+    public function testFlatMenuFiltered()
+    {
+        $provider = new AssociativeArrayProvider([
+            [
+                'caption' => 'Finn',
+                'tag' => 'bro',
+            ],
+            [
+                'caption' => 'Jake',
+                'tag' => 'bro'
+            ],
+            [
+                'caption' => 'Ice King'
+            ],
+            [
+                'caption' => 'PB :3',
+                'role' => 'princess',
+            ],
+        ], static function ($item) {
+            if (isset($item['tag']) && $item['tag'] == 'bro') {
+                return true;
+            }
+
+            if (isset($item['role'])) {
+                return true;
+            }
+
+            return false;
+        });
+
+        $items = $provider->getItems();
+
+        $this->assertEquals([0, 1, 3], array_keys($items));
+    }
 }
