@@ -3,7 +3,7 @@
     "description": "Small library that is all about links and menus",
     "type": "library",
     "require": {
-        "php": ">5.4"
+        "php": ">=7.0"
     },
     "license": "MIT",
     "authors": [
@@ -12,7 +12,20 @@
             "email": "Thoronir42@Gmail.com"
         }
     ],
+    "scripts": {
+        "test": "phpunit ./test/unit"
+    },
     "autoload":{
-        "classmap": ["src/"]
+        "psr-4": {
+            "SeStep\\Navigation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Test\\SeStep\\Navigation\\": "test/"
+      }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
     }
 }
