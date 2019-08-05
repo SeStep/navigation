@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace SeStep\Navigation\Menu;
 
@@ -7,37 +7,33 @@ use SeStep\Navigation\Menu\Items\NavMenuLink;
 use SeStep\Navigation\Menu\Items\NavMenuSeparator;
 use UnexpectedValueException;
 
-/**
- * Class NavigationMenuSubitems
- * @package SeStep\Navigation\Menu
- *
- * @property INavMenuItem[] $items
- */
-trait NavigationMenuSubitems
+/** @internal */
+trait NavigationMenuSubItems
 {
     /** @var INavMenuItem[] */
     protected $items = [];
 
-    /**
-     * @return bool
-     */
-    public function hasItems()
+    public function hasItems(): bool
     {
         return !empty($this->items);
     }
 
-    /**
-     * @return INavMenuItem[]
-     */
-    public function getItems()
+    public function hasItem($name): bool
+    {
+        return isset($this->items[$name]);
+    }
+
+    /** @return INavMenuItem[] */
+    public function getItems(): array
     {
         return $this->items;
     }
 
     /**
      * @param INavMenuItem[] $items
+     * @return static
      */
-    public function setItems($items)
+    public function setItems(array $items)
     {
         foreach ($items as $item) {
             if (!($item instanceof INavMenuItem)) {
@@ -45,19 +41,13 @@ trait NavigationMenuSubitems
             }
         }
         $this->items = $items;
+
+        return $this;
     }
 
-    /**
-     * @param $target
-     * @param $caption
-     * @param array $parameters
-     * @return NavMenuLink
-     */
-    public function addLink($target, $caption = '', $icon = '', $parameters = [])
+    public function addLink($target, string $caption = '', string $icon = '', array $parameters = [])
     {
-        $item = new NavMenuLink($target, $caption, $icon, $parameters);
-
-        return $this->items[] = $item;
+        return $this->items[] = new NavMenuLink($target, $caption, $icon, $parameters);
     }
 
     public function addSeparator()

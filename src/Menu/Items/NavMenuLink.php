@@ -1,24 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace SeStep\Navigation\Menu\Items;
 
-/**
- * Class NavMenuLink
- * @package SeStep\Navigation\Menu\Items
- *
- * @property    string $target
- * @property    string $caption
- * @property    string $icon
- * @property    array $parameters
- */
 class NavMenuLink extends ANavMenuItem
 {
+    /** @var string */
     protected $target;
+    /** @var string */
     protected $caption;
+    /** @var string */
     protected $icon;
+    /** @var array */
     protected $parameters;
 
-    public function __construct($target, $caption = '', $icon = '', $parameters = [])
+    public function __construct(string $target, string $caption = '', string $icon = null, array $parameters = [])
     {
         $this->target = $target;
         $this->caption = $caption ?: $target;
@@ -26,7 +21,7 @@ class NavMenuLink extends ANavMenuItem
         $this->parameters = $parameters;
     }
 
-    public function getRole()
+    public function getRole(): string
     {
         if ($this->hasItems()) {
             return self::ROLE_DROPDOWN;
@@ -35,50 +30,42 @@ class NavMenuLink extends ANavMenuItem
         }
     }
 
-    /** @return string */
-    public function getTarget()
+    public function getTarget(): string
     {
         return $this->target;
     }
 
-    /** @param string $target */
-    public function setTarget($target)
+    public function setTarget(string $target)
     {
         $this->target = $target;
     }
 
-    /** @return string */
-    public function getCaption()
+    public function getCaption(): string
     {
         return $this->caption;
     }
 
-    /** @param string $caption */
-    public function setCaption($caption)
+    public function setCaption(string $caption)
     {
         $this->caption = $caption;
     }
 
-    /** @return string */
-    public function getIcon()
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
 
-    /** @param string $icon */
-    public function setIcon($icon)
+    public function setIcon(?string $icon)
     {
         $this->icon = $icon;
     }
 
-    /** @return array */
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters;
     }
 
-    /** @param array $parameters */
-    public function setParameters($parameters)
+    public function setParameters(array $parameters)
     {
         $this->parameters = $parameters;
     }

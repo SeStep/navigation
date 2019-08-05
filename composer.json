@@ -3,7 +3,7 @@
     "description": "Small library that is all about links and menus",
     "type": "library",
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.1"
     },
     "license": "MIT",
     "authors": [
